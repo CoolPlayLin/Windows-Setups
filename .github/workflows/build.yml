@@ -1,5 +1,9 @@
 name: Build package
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
 
 jobs:
   prebuild:
@@ -48,3 +52,18 @@ jobs:
         with:
           path: dist/*
           name: ${{ matrix.packages }}
+  release:
+    if: startsWith(github.event.release.tag_name, 'v')
+    needs: [build, prebuild]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: dist
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
