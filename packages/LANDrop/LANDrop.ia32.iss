@@ -105,8 +105,8 @@ Name: "vietnamese"; MessagesFile: "compiler:Languages\Vietnamese.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: ".\LANDrop\LANDrop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: ".\LANDrop\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ".\ia32\LANDrop.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\ia32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
