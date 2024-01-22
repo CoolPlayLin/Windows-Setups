@@ -1,0 +1,50 @@
+name: Build package
+on: [push, pull_request]
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21"
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "8"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Setup matrix
+        id: setup-packages
+        run: pnpm run setup-matrix
+    outputs:
+      packages: ${{ steps.setup-packages.outputs.packages }}
+  build:
+    needs: [prebuild]
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        packages: ${{ fromJson(needs.prebuild.outputs.packages) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21"
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "8"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build with script
+        run: pnpm run build ${{ matrix.packages }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          path: dist/*
+          name: ${{ matrix.packages }}

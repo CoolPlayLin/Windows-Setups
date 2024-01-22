@@ -1,0 +1,13 @@
+{
+  "name": "Windows-Setups",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup-matrix": "node scripts/setupMatrix.js",
+    "build": "node scripts/build.js"
+  },
+  "keywords": [],
+  "author": "CoolPlayLin",
+  "license": "MIT"
+}
