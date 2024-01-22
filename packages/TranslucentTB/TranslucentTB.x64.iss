@@ -4,23 +4,23 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{ADA5E77B-F7B5-4EB5-82BD-CD9CE6017A3B}
-AppName=LANDrop
-AppVersion=0.4.0
-;AppVerName=LANDrop 0.4.0
-AppPublisher=LANDrop
-AppPublisherURL=https://github.com/LANDrop
-AppSupportURL=https://github.com/LANDrop
-AppUpdatesURL=https://github.com/LANDrop
-DefaultDirName={autopf}\LANDrop
-DefaultGroupName=LANDrop
+AppId={{BCFC54F7-BFE4-48BF-8BD9-E05AC43F6C18}
+AppName=TranslucentTB
+AppVersion=2023.2
+;AppVerName=TranslucentTB 2023.2
+AppPublisher=TranslucentTB
+AppPublisherURL=https://github.com/TranslucentTB/TranslucentTB
+AppSupportURL=https://github.com/TranslucentTB/TranslucentTB
+AppUpdatesURL=https://github.com/TranslucentTB/TranslucentTB
+DefaultDirName={autopf}\TranslucentTB
+DefaultGroupName=TranslucentTB
 AllowNoIcons=yes
-LicenseFile=./LICENSE
+LicenseFile=.\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=.
-OutputBaseFilename=LANDrop.Setup.ia32.User
+OutputBaseFilename=TranslucentTB.Setup.x64
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -105,15 +105,16 @@ Name: "vietnamese"; MessagesFile: "compiler:Languages\Vietnamese.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: ".\LANDrop\LANDrop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: ".\LANDrop\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ".\x64\TranslucentTB.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\LANDrop"; Filename: "{app}\LANDrop.exe"
-Name: "{group}\{cm:ProgramOnTheWeb,LANDrop}"; Filename: "https://github.com/LANDrop"
-Name: "{group}\{cm:UninstallProgram,LANDrop}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\LANDrop"; Filename: "{app}\LANDrop.exe"; Tasks: desktopicon
+Name: "{group}\TranslucentTB"; Filename: "{app}\TranslucentTB.exe"
+Name: "{group}\{cm:ProgramOnTheWeb,TranslucentTB}"; Filename: "https://github.com/TranslucentTB/TranslucentTB"
+Name: "{group}\{cm:UninstallProgram,TranslucentTB}"; Filename: "{uninstallexe}"
+Name: "{autodesktop}\TranslucentTB"; Filename: "{app}\TranslucentTB.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\LANDrop.exe"; Description: "{cm:LaunchProgram,LANDrop}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\TranslucentTB.exe"; Description: "{cm:LaunchProgram,TranslucentTB}"; Flags: nowait postinstall skipifsilent
+
