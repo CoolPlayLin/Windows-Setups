@@ -1,6 +1,7 @@
 name: Build package
 on:
   push:
+    branches: [master]
   pull_request:
   release:
     types: [published]
