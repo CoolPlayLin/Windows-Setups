@@ -5,9 +5,17 @@
   "main": "index.js",
   "scripts": {
     "setup-matrix": "node scripts/setupMatrix.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "format": "prettier --write --cache scripts"
   },
   "keywords": [],
   "author": "CoolPlayLin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/progress": "^2.0.7",
+    "prettier": "^3.2.4"
+  }
 }

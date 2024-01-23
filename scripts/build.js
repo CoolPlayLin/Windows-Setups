@@ -3,11 +3,13 @@ const fs = require("node:fs");
 const child_process = require("node:child_process");
 const os = require("node:os");
 const process = require("node:process");
+const ProgressBar = require("progress");
+
+if (os.platform() !== "win32") {
+  throw new Error("This program only works on Windows.");
+}
 
 const main = () => {
-  if (os.platform() !== "win32") {
-    throw new Error("This program only works on Windows.");
-  }
   const distPath = path.resolve("dist");
   if (fs.existsSync(distPath)) {
     fs.readdirSync(distPath).forEach((file) => {
@@ -39,8 +41,11 @@ const main = () => {
       console.log(`Found config ${file}`);
       return path.join(packagePath, file);
     });
+  console.log(`Found ${configs.length} config files in total`);
+  console.log(`=========================\nCompiling ${package}......`);
+  const bar = new ProgressBar(":bar", { total: configs.length, width: 25 });
   for (let config of configs) {
-    console.log(`Starting compile ${config}`);
+    bar.tick();
     child_process.execSync(`${compilerPath} ${config}`);
   }
   fs.mkdirSync(distPath);
@@ -54,9 +59,9 @@ const main = () => {
 };
 
 console.log(
-  `=========================\nCompiling process started\n=========================`
+  `=========================\nCompiling process started\n=========================`,
 );
 main();
 console.log(
-  `=========================\nCompiling process ended\n=========================`
+  `=========================\nCompiling process ended\n=========================`,
 );

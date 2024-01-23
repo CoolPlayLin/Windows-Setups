@@ -9,7 +9,7 @@ const main = () => {
   }
   const packages = JSON.stringify(fs.readdirSync(packagesPath));
   console.log(
-    child_process.execSync(`echo 'packages="${packages}"'`).toString()
+    child_process.execSync(`echo 'packages="${packages}"'`).toString(),
   );
   child_process.execSync(`echo 'packages=${packages}' >> $GITHUB_OUTPUT`);
 };
